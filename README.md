@@ -1,24 +1,25 @@
-# civilization-idlegame
+# 文明：放置游戏 Civilization-IdleGame
 
-## Project setup
-```
-npm install
-```
+学习 [Vue.js](https://vue3js.cn/) 时写的小游戏。  
+尚未开发完成。
 
-### Compiles and hot-reloads for development
+* * *
+
+# 使用方法
+
+启用 `vue-cli-service` (在浏览器中输入 `http://localhost:8080` 打开):
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+构建项目:
 ```
 npm run build
 ```
+* * *
 
-### Lints and fixes files
-```
-npm run lint
-```
+# 技术栈
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Vue.js](https://vue3js.cn/)
+
+[Materiallize](http://www.materializecss.cn):一个 Material Design 风格的 UI 库
