@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "jquery": "^3.6.0",
+    "materialize-css": "^1.0.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
@@ -32,7 +34,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",
