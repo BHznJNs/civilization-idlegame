@@ -48,19 +48,6 @@
 </script>
 
 <style scoped>
-    /* 过渡动画 */
-    .slide-enter-active,
-    .slide-leave-active {
-        will-change: width, opacity;
-        transition: .6s
-    }
-    .slide-enter-from,
-    .slide-leave-to {
-        width: 0 !important;
-        opacity: 0
-    }
-    /* ---- */
-
     .main-interface {
         display: flex;
         height: 80vh
@@ -108,4 +95,17 @@
     ul .btn.inactive:hover {
         background-color: #eee
     }
+
+    /* 过渡动画 */
+    .slide-enter-active,
+    .slide-leave-active {
+        will-change: width, opacity;
+        transition: .6s
+    }
+    .slide-enter-from,
+    .slide-leave-to {
+        width: 0 !important;
+        opacity: 0
+    }
+    /* ---- */
 </style>

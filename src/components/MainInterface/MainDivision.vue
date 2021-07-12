@@ -32,6 +32,8 @@
 </template>
 
 <script>
+    let timeoutEvent, intervalEvent
+
     export default {
         computed: {
             // 计算无业游民数量
@@ -77,16 +79,16 @@
             },
             // LP = Long Press
             LPStart(building, num) {
-                clearTimeout(this.timeOutEvent)
-                this.timeOutEvent = setTimeout(() => {
-                    this.intervalEvent = setInterval(() => {
+                clearTimeout(timeoutEvent)
+                timeoutEvent = setTimeout(() => {
+                    intervalEvent = setInterval(() => {
                         this.changeDivision(building, num)
                     }, 250)
                 }, 400)
             },
             LPEnd() {
-                clearTimeout(this.timeOutEvent)
-                clearInterval(this.intervalEvent)
+                clearTimeout(timeoutEvent)
+                clearInterval(intervalEvent)
             }
         },
         mounted() {

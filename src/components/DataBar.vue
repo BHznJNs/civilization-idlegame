@@ -1,14 +1,13 @@
 <template>
+    <div class="title grey darken-3 waves-effect">文明：放置游戏</div>
+
     <ul class="data-bar side-nav">
-        <li>
-            <a class="title grey darken-3 white-text">资源栏</a>
-        </li>
         <li v-for="(value, name, index) in resourceImg" :key="index">
             <a class="resource" :class="{ 'resource-empty': !resourceData[name] }">
                 <img class="resource-img" :src="value.src" :alt="value.name">
                 &nbsp;{{ value.name }}：{{ floatResolve(resourceData[name]) }}
             </a>
-            <div class="divider" v-if="index != Object.keys(resourceData).length - 1"></div>
+            <div class="divider" v-once v-if="index != Object.keys(resourceData).length - 1"></div>
         </li>          <!-- ^ 如果为最后一项 -->
     </ul>
 </template>
@@ -45,12 +44,20 @@
 </script>
 
 <style scoped>
+    div.title {
+        height: 6vh;
+        color: white;
+        font-size: 1.6rem;
+        text-align: center;
+        line-height: 6vh
+    }
+
     .data-bar {
+        position: relative;
         width: 240px;
         max-width: 30vw;
-        height: 60vh;
-        padding: 0;
-        overflow: auto
+        height: 54vh;
+        padding: 0
     }
 
     .title {
@@ -66,13 +73,18 @@
         font-size: 1.2rem;
         transition: .2s
     }
+    .resource img {
+        transition: .2s
+    }
     .resource-empty {
         color: #bdbdbd;
+        pointer-events: none;
         user-select: none
     }
-    .resource-empty:hover {
-        background-color: white
+    .resource-empty img {
+        opacity: .4
     }
+
     .resource-img {
         height: 85%;
         user-select: none

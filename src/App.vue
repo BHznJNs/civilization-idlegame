@@ -1,8 +1,8 @@
 <template>
-    <data-bar></data-bar>
-    <event-bar></event-bar>
-    <main-interface></main-interface>
-    <tips-bar></tips-bar>
+    <data-bar v-once></data-bar>
+    <event-bar v-once></event-bar>
+    <main-interface v-once></main-interface>
+    <tips-bar v-once></tips-bar>
 </template>
 
 <script>
@@ -23,23 +23,19 @@
                 buildings: {
                     room: {
                         name: "房屋", num: 1,
-                        price: {food: 200, wood: 200},
-                        info: "温暖的小房子，每个房子可容纳 2 个人。"
+                        price: {food: 200, wood: 200}
                     },
                     field: {
                         resource: "food", name: "农田",
-                        num: 0, price: {food: 100},
-                        info: "普通的农田，每人每两秒可以生产 3 单位粮食。"
+                        num: 0, price: {food: 100}
                     },
                     logging: {
                         resource: "wood", name: "伐木场",
-                        num: 0, price: {food: 200, wood: 200},
-                        info: "原始的伐木场，每人每两秒可以生产 2.4 单位木材"
+                        num: 0, price: {food: 200, wood: 200}
                     },
                     quarry: {
                         resource: "stone", name: "采石场",
-                        num: 0, price: {food: 400, wood: 400},
-                        info: "原始的采石场，每人每两秒可以生产 2.4 单位石料和 2 单位煤炭"
+                        num: 0, price: {food: 400, wood: 400}
                     }
                 },
                 division: {
@@ -69,7 +65,7 @@
                     ironMine: 0,
                     ironIngot: 0
                 },
-                tips: {}
+                showingInfo: []
             }
         },
         provide() {
@@ -78,7 +74,7 @@
                 division: this.division,
                 event: this.event,
                 resourceData: this.resourceData,
-                tips: this.tips
+                showingInfo: this.showingInfo
             }
         }
     }
