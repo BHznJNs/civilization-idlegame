@@ -33,12 +33,12 @@
                     },
                     logging: {
                         resource: "wood", name: "伐木场",
-                        num: 0, price: {food: 300},
+                        num: 0, price: {food: 200, wood: 200},
                         info: "原始的伐木场，每人每两秒可以生产 2.4 单位木材"
                     },
                     quarry: {
                         resource: "stone", name: "采石场",
-                        num: 0, price: {food: 200, wood: 400},
+                        num: 0, price: {food: 400, wood: 400},
                         info: "原始的采石场，每人每两秒可以生产 2.4 单位石料和 2 单位煤炭"
                     }
                 },
@@ -53,19 +53,21 @@
                     },
                     quarry: {
                         num: 0, name: "采石场",
-                        increase: [
-                            {resource: "stone", num: 2.4},
-                            {resource: "coal", num: 2}
-                        ]
+                        increase: [{resource: "stone", num: 2.4}]
                     }
                 },
                 event: [],
                 resourceData: {
                     population: 2,
-                    food: 20000, // default 200
-                    wood: 1000, // default 100
+                    unemplyed: 2,
+                    food: 5000, // default 200
+                    wood: 1000, // default 400
                     stone: 0,
-                    coal: 0
+                    coal: 0,
+                    copperMine: 0,
+                    copperIngot: 0,
+                    ironMine: 0,
+                    ironIngot: 0
                 },
                 tips: {}
             }

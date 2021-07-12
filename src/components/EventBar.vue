@@ -20,26 +20,8 @@
 </script>
 
 <style scoped>
-    /* 过渡动画 */
-    .fade-enter-active,
-    .fade-leave-active {
-        transition: opacity 0.5s ease;
-    }
-    .fade-enter-from,
-    .fade-leave-to {
-        opacity: 0;
-    }
-    /* ---- */
-
-    .divider {
-        width: 100%
-    }
-
-    .material-icons {
-        line-height: unset;
-    }
-
     .event-bar {
+        position: relative;
         width: 240px;
         max-width: 30vw;
         height: 40vh;
@@ -84,4 +66,23 @@
             font-size: 1.2rem
         }
     }
+    
+    .divider {
+        width: 100%
+    }
+
+    .material-icons {
+        line-height: unset;
+    }
+
+    /* 过渡动画 */
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.5s ease;
+    }
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
+    }
+    /* ---- */
 </style>

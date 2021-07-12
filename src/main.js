@@ -1,7 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import "../src/assets/css/materialize.css"
-import "../src/assets/css/material-icon.css"
-import "./waves"
+// Materialize UI
+import "./assets/css/materialize.css"
+import "./assets/css/material-icon.css"
+import "./assets/waves"
+// Perfect Scrollbar
+import "./assets/css/perfect-scrollbar.css"
+import PerfectScrollbar from "./assets/perfect-scrollbar"
+//————————————————————
 
-createApp(App).mount('#app')
+createApp(App).mount("#app")
+
+new PerfectScrollbar(".data-bar")
+new PerfectScrollbar(".event-bar")
+

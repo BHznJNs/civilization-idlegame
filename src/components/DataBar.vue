@@ -20,7 +20,11 @@
         food: { name: "粮食", src: "" },
         wood: { name: "木材", src: "" },
         stone: { name: "石料", src: "" },
-        coal: { name: "煤炭", src: "" }
+        coal: { name: "煤炭", src: "" },
+        copperMine: { name: "铜矿", src: "" },
+        copperIngot: { name: "铜锭", src: "" },
+        ironMine: { name: "铁矿", src: "" },
+        ironIngot: { name: "铁锭", src: "" }
     }
     // 遍历对象，获取其对应图标
     for (var index in resourceImg) {
@@ -45,6 +49,7 @@
         width: 240px;
         max-width: 30vw;
         height: 60vh;
+        padding: 0;
         overflow: auto
     }
 

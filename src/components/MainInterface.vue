@@ -9,8 +9,12 @@
                 {{ value }}
             </button>
         </ul>
-        <main-buildings v-show="showingItem == 'buildings'"></main-buildings>
-        <main-division v-show="showingItem == 'division'"></main-division>
+        <transition name="slide">
+            <main-buildings v-show="showingItem == 'buildings'"></main-buildings>
+        </transition>
+        <transition name="slide">
+            <main-division v-show="showingItem == 'division'"></main-division>
+        </transition>
     </div>
 </template>
 
@@ -27,7 +31,8 @@
             return {
                 menuItems: {
                     buildings: "建筑",
-                    division: "分工"
+                    division: "分工",
+                    counter: "统计"
                 },
                 showingItem: "buildings"
             }
@@ -43,6 +48,19 @@
 </script>
 
 <style scoped>
+    /* 过渡动画 */
+    .slide-enter-active,
+    .slide-leave-active {
+        will-change: width, opacity;
+        transition: .6s
+    }
+    .slide-enter-from,
+    .slide-leave-to {
+        width: 0 !important;
+        opacity: 0
+    }
+    /* ---- */
+
     .main-interface {
         display: flex;
         height: 80vh

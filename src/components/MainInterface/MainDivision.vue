@@ -4,13 +4,14 @@
             无业游民：&nbsp;
             <div class="item-num">{{ getUnemployed }}</div>
         </div>
-        <div class="division-item"
+        <div class="division-item division-item-slide"
              v-for="(value, name) in division"
              :key="name">
             {{ value.name }}：&nbsp;<!-- 建筑名称 -->
             <button class="btn waves-effect blue-grey material-icons"
                     :class="{ disabled: !value.num }"
                     @click="changeDivision(name, -1)"
+
                     @mousedown="LPStart(name, -1)"
                     @mouseleave="LPEnd()"
                     @mouseup="LPEnd()">
@@ -20,6 +21,7 @@
             <button class="btn waves-effect blue-grey material-icons"
                     :class="{ disabled: !canBeAdded(name) }"
                     @click="changeDivision(name, 1)"
+                    
                     @mousedown="LPStart(name, 1)"
                     @mouseleave="LPEnd()"
                     @mouseup="LPEnd()">
@@ -33,15 +35,24 @@
     export default {
         computed: {
             // 计算无业游民数量
-            getUnemployed() {
-                let unemployed
-                let population = this.resourceData.population
-                for (let item in this.division) {
-                    let num = this.division[item].num
-                    population -= num
+            getUnemployed: {
+                get: function() {
+                    let unemployed
+                    let population = this.resourceData.population
+                    for (let item in this.division) {
+                        let num = this.division[item].num
+                        population -= num
+                    }
+                    unemployed = population
+                    return unemployed
+                },
+                set: function(newValue) {
+                    this.unemployed = newValue
                 }
-                unemployed = population
-                return unemployed
+            },
+            foodIncrease() {
+                let consume = this.resourceData.population
+                return 0
             }
         },
         methods: {
@@ -51,7 +62,7 @@
             },
             // 函数：改变资源数量
             changeResource(resource, num) {
-                if (this.resourceData[resource] < Math.abs(num) && num < 0) {
+                if (this.resourceData[resource] <= Math.abs(num) && num < 0) {
                     this.resourceData[resource] = 0
                 } else {
                     this.resourceData[resource] += num
@@ -85,9 +96,22 @@
                 const population = this.resourceData.population
                 const food = this.resourceData.food
                 if (food > 0) {
-                    this.changeResource("food", - population * 1)
-                } else { // 当食物不足时，每秒死去一人
+                    // 当粮食充足时，每秒消耗粮食
+                    this.changeResource("food", - population)
+                } else {
+                    // 当粮食不足时，每秒死去一人
                     this.changeResource("population", -1)
+                    // 清除除农田以外的其他工作分工
+                    let divisionKeys = Object.keys(this.division)
+
+                    for (let key in divisionKeys.splice(1)) {
+                        console.log(key)
+                    }
+                    // 每两秒减少一个农田分工
+                    let field = this.division["field"].num
+                    if (population == field && field > 0) {
+                        this.division["field"].num -= 1
+                    }
                 }
 
                 // 人口增长
@@ -121,6 +145,7 @@
         height: 2rem;
         margin: 0 .6rem 1.2rem;
         font-size: 1.2rem;
+        transition: .3s ease-out
     }
     .division-item.unemployed {
         width: 100%;
@@ -141,4 +166,11 @@
                     0 1px 5px 0 rgba(0, 0, 0, 0.2);
         user-select: none
     }
+
+    /* 过渡动画 */
+    .main-division.slide-enter-active .division-item-slide,
+    .main-division.slide-leave-active .division-item-slide {
+        opacity: 0
+    }
+    /* ---- */
 </style>
