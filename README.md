@@ -1,6 +1,6 @@
 # 文明：放置游戏 Civilization-IdleGame
 
-学习 [Vue.js](https://vue3js.cn/) 时写的小游戏。  
+学习 [Vue.js](https://vue3js.cn/) 时写的小游戏，灵感主要来自另一款游戏，[猫国建设者](https://www.bloodrizer.ru/games/kittens/)。  
 尚未开发完成。
 
 * * *
