@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './App'
 // Materialize UI
 import "./assets/css/materialize.css"
 import "./assets/css/material-icon.css"

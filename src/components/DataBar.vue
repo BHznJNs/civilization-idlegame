@@ -60,18 +60,15 @@
         padding: 0
     }
 
-    .title {
-        font-size: 1.6rem;
-        text-align: center;
-        user-select: none
-    }
-
     .resource {
         display: flex;
         align-items: center;
         padding: 0 24px;
         font-size: 1.2rem;
         transition: .2s
+    }
+    .resource:hover {
+        background-color: #eee
     }
     .resource img {
         transition: .2s
@@ -89,21 +86,22 @@
         height: 85%;
         user-select: none
     }
+
+    .divider {
+        margin: 0 !important
+    }
+
     @media screen and (max-width: 600px) {
-        @media screen and (max-width: 400px) {
-            .resource {
-                font-size: 1rem
-            }
+        .title {
+            font-size: 1.4rem
         }
+
         .resource {
-            padding: 0 12px
+            padding: 0 12px;
+            font-size: 1rem
         }
         .resource-img {
             height: 50%;
         }
-    }
-
-    .divider {
-        margin: 0 !important
     }
 </style>

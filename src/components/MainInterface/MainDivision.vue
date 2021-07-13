@@ -84,7 +84,7 @@
                     intervalEvent = setInterval(() => {
                         this.changeDivision(building, num)
                     }, 250)
-                }, 400)
+                }, 200)
             },
             LPEnd() {
                 clearTimeout(timeoutEvent)
@@ -129,10 +129,7 @@
                     if (!num) {continue}
 
                     let increase = item.increase // 建筑对应资源增长数据
-                    for (let item of increase) {
-                        // item.num 为建筑对应的单个分工每两秒增长的资源
-                        this.changeResource(item.resource, num*item.num)
-                    }
+                    this.changeResource(increase.resource, num * item.num)
                 }
             }, 2000)
         },

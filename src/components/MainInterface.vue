@@ -15,17 +15,22 @@
         <transition name="slide">
             <main-division v-show="showingItem == 'division'"></main-division>
         </transition>
+        <transition name="slide">
+            <main-counter v-show="showingItem == 'counter'"></main-counter>
+        </transition>
     </div>
 </template>
 
 <script>
     import MainBuildings from "./MainInterface/MainBuildings"
     import MainDivision from "./MainInterface/MainDivision"
+    import MainCounter from "./MainInterface/MainCounter"
 
     export default {
         components: {
             MainBuildings,
-            MainDivision
+            MainDivision,
+            MainCounter
         },
         data() {
             return {
@@ -63,7 +68,7 @@
         }
     }
 
-    .main-buildings, .main-division {
+    .main-buildings, .main-division, .main-counter {
         display: flex;
         flex-wrap: wrap;
         align-content: flex-start;

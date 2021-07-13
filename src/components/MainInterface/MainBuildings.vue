@@ -1,12 +1,14 @@
 <template>
     <div class="main-buildings">
         <button class="btn blue-grey waves-effect"
+                @mouseover="showInfo(0)"
+                @mouseleave="hideInfo"
                 @click="addFood">
                 增加食物
         </button>
         <button class="btn blue-grey btn-slide"
                 v-for="(value, name, index) in buildings"
-                @mouseover="showInfo(index)"
+                @mouseover="showInfo(index + 1)"
                 @mouseleave="hideInfo"
                 @click="addBuilding(name, $event.currentTarget)"
                 :class="{
@@ -21,6 +23,11 @@
 
 <script>
     const BuildingInfo = [
+        {
+            price: "无",
+            func: "获得 1 粮食",
+            describe: "作为这个文明的创世神，你可以凭空生成粮食，并以此获得子民的崇拜。"
+        },
         {
             price: "200 粮食，200 木材",
             func: "增加 2 人口上限",
@@ -40,6 +47,11 @@
             price: "400 粮食，400 木材",
             func: "增加 2 采石场雇佣上限",
             describe: "原始的采石场，每人每两秒可以生产 2.4 单位石料"
+        },
+        {
+            price: "600 粮食，400 木材，400 石料",
+            func: "增加 2 煤矿雇佣上限",
+            describe: "普通的煤矿，每人每两秒可以生产 2 单位煤炭。"
         }
     ]
     let timeoutEvent
@@ -68,7 +80,7 @@
                 // 建筑增加
                 this.buildings[building].num += 1
                 // 事件记录
-                this.event.push("你建造了一个" + this.buildings[building].name)
+                this.event.unshift("你建造了一个" + this.buildings[building].name)
             },
             // 函数：检查资源是否足够
             checkEnough(building) {
@@ -98,7 +110,7 @@
 
 <style scoped>
     .btn {
-        margin: 0 .6rem 1.2rem;
+        margin: 0 .6rem 1.8rem;
         user-select: none
     }
 
