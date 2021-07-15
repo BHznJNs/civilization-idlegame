@@ -23,7 +23,7 @@ npm run build
 ```
 * * *
 
-# 技术栈
+# 框架与库
 
 [Vue.js](https://vue3js.cn/): 一个渐进式 JavaScript 框架
 
