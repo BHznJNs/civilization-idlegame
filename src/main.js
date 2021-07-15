@@ -14,3 +14,6 @@ createApp(App).mount("#app")
 new PerfectScrollbar(".data-bar")
 new PerfectScrollbar(".event-bar")
 
+new PerfectScrollbar(".main-buildings")
+new PerfectScrollbar(".main-division")
+new PerfectScrollbar(".main-counter")

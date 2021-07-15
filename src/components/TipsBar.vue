@@ -1,17 +1,22 @@
 <template>
     <div class="tips-bar">
         <transition name="fade">
-            <div class="info-shower"
-                v-if="showingInfo.length">
+            <div 
+                class="info-shower"
+                v-if="showingInfo.length"
+            >
                 <div class="price">{{ showingInfo[0].price }}</div>
                 <div class="func">{{ showingInfo[0].func }}</div>
                 <div class="describe">{{ showingInfo[0].describe }}</div>
             </div>
         </transition>
         <transition name="fade">
-            <div id="tip-box" class="waves-effect"
+            <div 
+                id="tip-box" 
+                class="card waves-effect hoverable"
                 v-show="!showingInfo.length"
-                @click="changeTip">
+                @click="changeTip"
+            >
                 {{ showingTip }}
             </div>
         </transition>
@@ -19,15 +24,8 @@
 </template>
 
 <script>
-    const Tips = [
-        "不许炼铜，你这个 Hentai！",
-        "粮食是最重要的资源，粮食缺乏会导致除农业外的产业瘫痪。",
-        "你知咩，iron(铁)有熨斗的意思。",
-        "你知咩，铜曾被称为“亦金”。",
-        "你知咩，其实作者我还是B站的UP主哦！什么，你知道？那还不来点个关注？",
-        "其实，煤炭除了能用来烧矿，还能用来铺地。",
-        "其实，在这游戏中，建造建筑最多只需要消耗 3 种资源。"
-    ]
+    import Tips from "./Tips"
+
     let intervalEvent
 
     export default {
@@ -88,7 +86,8 @@
         margin-top: .4rem;
         color: #212121;
         font-size: 1.2rem;
-        text-indent: 2rem
+        text-indent: 2rem;
+        transition: .3s ease-out
     }
 
     .tips-bar {
@@ -116,9 +115,6 @@
         background-color: #fafafa;
         border-radius: 4px;
         text-indent: 2rem;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-                    0 3px 1px -2px rgba(0, 0, 0, 0.12),
-                    0 1px 5px 0 rgba(0, 0, 0, 0.2);
         transition: .2s
     }
     #tip-box:hover {

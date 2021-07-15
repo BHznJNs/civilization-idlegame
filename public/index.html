@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="manifest" href="../manifest.json">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>文明：放置游戏</title>
 
@@ -22,6 +23,9 @@
         }
 
         /* 资源栏、事件栏 滚动条设为左侧 */
+        .ps {
+            position: relative
+        }
         .data-bar .ps__rail-y,
         .event-bar .ps__rail-y{
             left: 0;

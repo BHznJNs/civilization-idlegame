@@ -1,22 +1,30 @@
 <template>
     <div class="main-interface">
         <ul>
-            <button class="btn waves-effect"
-                    v-for="(value, name) in menuItems"
-                    @click="changeShowingItem(name)"
-                    :class="{ inactive: showingItem != name }"
-                    :key="name">
+            <button
+                class="btn waves-effect"
+                v-for="(value, name) in menuItems"
+                @click="changeShowingItem(name)"
+                :class="{ inactive: showingItem != name }"
+                :key="name"
+            >
                 {{ value }}
             </button>
         </ul>
         <transition name="slide">
-            <main-buildings v-show="showingItem == 'buildings'"></main-buildings>
+            <main-buildings v-show="showingItem == 'buildings'"/>
         </transition>
         <transition name="slide">
-            <main-division v-show="showingItem == 'division'"></main-division>
+            <main-division v-show="showingItem == 'division'"/>
         </transition>
         <transition name="slide">
-            <main-counter v-show="showingItem == 'counter'"></main-counter>
+            <main-counter v-show="showingItem == 'counter'"/>
+        </transition>
+        <transition name="slide">
+            <main-options v-show="showingItem == 'options'"/>
+        </transition>
+        <transition name="slide">
+            <main-about v-show="showingItem == 'about'"/>
         </transition>
     </div>
 </template>
@@ -25,19 +33,25 @@
     import MainBuildings from "./MainInterface/MainBuildings"
     import MainDivision from "./MainInterface/MainDivision"
     import MainCounter from "./MainInterface/MainCounter"
+    import MainOptions from "./MainInterface/MainOptions"
+    import MainAbout from "./MainInterface/MainAbout"
 
     export default {
         components: {
             MainBuildings,
             MainDivision,
-            MainCounter
+            MainCounter,
+            MainOptions,
+            MainAbout
         },
         data() {
             return {
                 menuItems: {
                     buildings: "建筑",
                     division: "分工",
-                    counter: "统计"
+                    counter: "统计",
+                    options: "设置",
+                    about: "关于"
                 },
                 showingItem: "buildings"
             }
@@ -68,7 +82,9 @@
         }
     }
 
-    .main-buildings, .main-division, .main-counter {
+    .main-buildings, .main-division,
+    .main-counter, .main-options,
+    .main-about {
         display: flex;
         flex-wrap: wrap;
         align-content: flex-start;

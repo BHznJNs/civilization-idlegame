@@ -1,71 +1,73 @@
 <template>
     <div class="main-buildings">
-        <button class="btn blue-grey waves-effect"
-                @mouseover="showInfo(0)"
-                @mouseleave="hideInfo"
-                @click="addFood">
+        <button
+            class="btn blue-grey waves-effect"
+            @mouseover="showInfo(0)"
+            @mouseleave="hideInfo"
+            @click="addFood"
+        >
                 增加食物
         </button>
-        <button class="btn blue-grey btn-slide"
-                v-for="(value, name, index) in buildings"
-                @mouseover="showInfo(index + 1)"
-                @mouseleave="hideInfo"
-                @click="addBuilding(name, $event.currentTarget)"
-                :class="{
-                    insufficient: !checkEnough(name),
-                    'waves-effect': checkEnough(name)
-                }"
-                :key="name">
-                {{ value.name }}：{{ value.num }}
+        <button
+            class="btn blue-grey fade"
+            v-for="(value, name, index) in buildings"
+            @mouseover="showInfo(index + 1)"
+            @mouseleave="hideInfo"
+            @click="addBuilding(name, $event.currentTarget)"
+
+            :class="{
+                insufficient: !checkEnough(name),
+                'waves-effect': checkEnough(name)
+            }"
+            :key="name"
+        >
+            {{ value.name }}：{{ value.num }}
         </button>
+        <div class="divider"></div>
+        <!-- 特殊建筑 -->
+        <div
+            class="card special-buildings fade"
+            :class="{ insufficient: !buildings[name].num }"
+            v-for="(value, name) in SpecialBuildings"
+            :key="name"
+        >
+            <!-- 特殊建筑名称 -->
+            <div class="card-title">{{ value.name }}</div>
+            <div class="divider"></div>
+            <!-- 特殊建筑选项 -->
+            <button 
+                class="btn waves-effect"
+                :class="{ selected: division[name].increase.resource == resourceName }"
+                @click="changeSB(name, resourceName)"
+                v-for="(resourceValue, resourceName) in value.resources"
+                :key="resourceName"
+            >
+                {{ resourceValue }}
+            </button>
+        </div>
     </div>
 </template>
 
 <script>
-    const BuildingInfo = [
-        {
-            price: "无",
-            func: "获得 1 粮食",
-            describe: "作为这个文明的创世神，你可以凭空生成粮食，并以此获得子民的崇拜。"
-        },
-        {
-            price: "200 粮食，200 木材",
-            func: "增加 2 人口上限",
-            describe: "温暖的小房子，每个房屋可容纳 2 个人。"
-        },
-        {
-            price: "100 粮食",
-            func: "增加 2 农田雇佣上限",
-            describe: "普通的农田，每人每两秒可以生产 3 单位粮食。"
-        },
-        {
-            price: "200 粮食，200 木材",
-            func: "增加 2 伐木场雇佣上限",
-            describe: "原始的伐木场，每人每两秒可以生产 2.4 单位木材。"
-        },
-        {
-            price: "400 粮食，400 木材",
-            func: "增加 2 采石场雇佣上限",
-            describe: "原始的采石场，每人每两秒可以生产 2.4 单位石料"
-        },
-        {
-            price: "600 粮食，400 木材，400 石料",
-            func: "增加 2 煤矿雇佣上限",
-            describe: "普通的煤矿，每人每两秒可以生产 2 单位煤炭。"
-        }
-    ]
+    import BuildingInfo from "./BuildingInfo"
+    import SpecialBuildings from "./SpecialBuildings"
+    
     let timeoutEvent
 
     export default {
+        data() {
+            return { SpecialBuildings }
+        },
         methods: {
             // 函数：改变资源数量
             addFood() {
                 this.resourceData.food += 1
+                this.counter.producedResource.food += 1
             },
             // 函数：增加建筑
             addBuilding(building, obj) {
                 let priceData = this.buildings[building].price
-                // 检查资源是否足够，若不够，则振动建筑按钮
+                // 检查资源是否足够，若不够，则振动建筑按钮并返回函数
                 if (!this.checkEnough(building)) {
                     obj.classList.add("insufficient-shake")
                     setTimeout(() => {
@@ -92,6 +94,10 @@
                 }
                 return true
             },
+            // change special buildings 改变特殊建筑生产资源
+            changeSB(building, resource) {
+                this.division[building].increase.resource = resource
+            },
             // 函数：设置延时，鼠标悬停 1.2s 后，展示建筑信息
             showInfo(index) {
                 timeoutEvent = setTimeout(() => {
@@ -104,13 +110,20 @@
                 clearTimeout(timeoutEvent)
             }
         },
-        inject: ["buildings", "event", "resourceData", "showingInfo"]
+        inject: [
+            "buildings", "counter", "division",
+            "event", "resourceData", "showingInfo"
+        ]
     }
 </script>
 
 <style scoped>
-    .btn {
-        margin: 0 .6rem 1.8rem;
+    .btn:hover:not(.insufficient) {
+        filter: brightness(1.1)
+    }
+
+    .main-buildings > .btn {
+        margin: 0 .8rem 1.6rem;
         user-select: none
     }
 
@@ -129,9 +142,42 @@
         50% {transform: translateX(-4px)}
     }
 
+    .card {
+        margin-top: 1rem;
+        transition: .3s ease-out
+    }
+    .card.insufficient {
+        pointer-events: none;
+        opacity: .6
+    }
+    .card.insufficient * {
+        pointer-events: none !important
+    }
+
+    .special-buildings {
+        color: white;
+        background-color: #647279
+    }
+    .card-title {
+        padding: 0 1rem;
+        user-select: none;
+        text-align: center
+    }
+    .special-buildings .btn {
+        margin: .4rem .6rem;
+        color: #424242;
+        background-color: #a6b6be;
+        pointer-events: auto;
+        opacity: .6
+    }
+    .special-buildings .btn.selected {
+        pointer-events: none;
+        opacity: 1
+    }
+
     /* 过渡动画 */
-    .main-buildings.slide-enter-active .btn-slide,
-    .main-buildings.slide-leave-active .btn-slide {
+    .slide-enter-active .fade,
+    .slide-leave-active .fade {
         opacity: 0
     }
     /* ---- */
