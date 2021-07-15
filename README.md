@@ -6,6 +6,16 @@
 
 * * *
 
+# 屏幕截图
+
+![main-buildings](screenShots/main-buildings.png)
+
+![buildings & info](screenShots/buildings_&_info.png)
+
+![main-divisions](screenShots/main-divisions.png)
+
+* * *
+
 # 使用方法
 
 本项目已 commit 构建后的代码，你可以在下载源码后直接在浏览器中打开 `dist/` 中的 `index.html` 使用。

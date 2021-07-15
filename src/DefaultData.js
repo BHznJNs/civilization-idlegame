@@ -2,7 +2,7 @@ const DefaultData = {
     resourceData: {
         population: 2,
         science: 0,
-        food: 4000, wood: 4000,
+        food: 400, wood: 400,
         stone: 0, coal: 0,
         copperMine: 0, copperIngot: 0,
         ironMine: 0, ironIngot: 0
