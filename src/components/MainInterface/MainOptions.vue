@@ -1,7 +1,7 @@
 <template>
     <div class="main-options">
         <div class="option-describe">
-            虽然退出/刷新界面是可以自动保存数据，不过你还是可以手动保存以防万一的。
+            虽然退出/刷新界面时可以自动保存数据，不过你还是可以手动保存以防万一的。
         </div>
         <button 
             class="btn waves-effect"
@@ -11,7 +11,7 @@
         </button>
         <div class="divider"></div>
         <div class="option-describe">
-            一键删除所有数据！请三思而后行。
+            一键删除所有数据！此操作不可逆，请三思而后行。
         </div>
         <button 
             class="btn waves-effect"
@@ -25,6 +25,7 @@
 <script>
     export default {
         methods: {
+            // 函数：清除数据
             clearData() {
                 this.removeBeforeunload()
                 localStorage.clear()
@@ -38,12 +39,11 @@
     .option-describe {
         width: 100%;
         font-size: 1.2rem;
-        text-align: center;
         transition: .3s ease-out
     }
 
     .btn {
-        margin: .6rem auto 1rem;
+        margin: .6rem 1rem 1rem;
         background-color: #647279 !important
     }
     .btn:hover {

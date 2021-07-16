@@ -2,8 +2,8 @@ const SpecialBuildings = {
     stove: {
         name: "熔炉",
         resources: {
-            copperIngot: "铜锭",
             "": "无",
+            copperIngot: "铜锭",
             ironIngot: "铁锭"
         }
     }

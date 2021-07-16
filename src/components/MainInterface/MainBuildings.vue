@@ -123,7 +123,7 @@
     }
 
     .main-buildings > .btn {
-        margin: 0 .8rem 1.6rem;
+        margin: 0 1.2rem 1.6rem;
         user-select: none
     }
 
@@ -143,7 +143,7 @@
     }
 
     .card {
-        margin-top: 1rem;
+        margin: 1rem .8rem 1.6rem;
         transition: .3s ease-out
     }
     .card.insufficient {

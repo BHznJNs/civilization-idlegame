@@ -60,7 +60,7 @@ const DefaultData = {
             num: 0, increase: {resource: "food", num: 2.4}
         },
         logging: {
-            num: 0, increase: {resource: "wood", num: 2}
+            num: 0, increase: {resource: "wood", num: 1.8}
         },
         quarry: {
             num: 0, increase: {resource: "stone", num: 2}
@@ -78,7 +78,7 @@ const DefaultData = {
             num: 0, increase: {resource: "copperMine", num: 1.2}
         },
         ironMine: {
-            num: 0, increase: {resource: "ironMine", num: 1.2}
+            num: 0, increase: {resource: "ironMine", num: 1}
         }
     }
 }

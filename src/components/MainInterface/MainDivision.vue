@@ -4,6 +4,7 @@
             无业游民：&nbsp;
             <div class="item-num">{{ unemployed }}</div>
         </div>
+
         <div 
             class="division-item division-item-slide"
             v-for="(value, name) in division"
@@ -94,15 +95,14 @@
         display: flex;
         align-items: center;
         height: 2rem;
-        margin: 0 .6rem 1.2rem;
+        margin: 0 1.2rem 1.2rem;
         color: #424242;
         font-size: 1.2rem;
         transition: .3s ease-out
     }
     .division-item.unemployed {
         width: 100%;
-        padding-bottom: 1.2rem;
-        justify-content: center;
+        padding-bottom: .6rem;
         border-bottom: solid 1px #e0e0e0
     }
     .division-item .btn {

@@ -88,7 +88,7 @@
         display: flex;
         flex-wrap: wrap;
         align-content: flex-start;
-        justify-content: space-around;
+        justify-content: flex-start;
         width: calc(100% - 4.4rem);
         height: 100%;
         padding: 2rem 1.6rem;
